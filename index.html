@@ -16,66 +16,8 @@
 
     <div id="gifs"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script type="text/javascript">
-    // Example queryURL for Giphy API
-    var topic = ["Lion","Tiger","Elephant","Dog","Cat"];
-    $("#btn_div").empty();
-
-    for(var i=0;i<topic.length;i++){
-        var a = $("<button>");
-        a.addClass("animal-topic");
-        a.attr("data-name", topic[i]);
-        a.text(topic[i]);
-        $("#btn_div").append(a);
-    }
-
-    $("#submit").click(function(event){
-        event.preventDefault();
-
-        var temp = $("#animal").val();
-        $("#animal").val("");
-        topic.push(temp);
-        $("#btn_div").empty();
-
-    for(var i=0;i<topic.length;i++){
-    var a = $("<button>");
-    a.addClass("animal-topic");
-    a.attr("data-name", topic[i]);
-    a.text(topic[i]);
-    $("#btn_div").append(a);
-}
-
-    });
-
-    $(document).on("click","button", function(){
-        $("#gifs").empty();
-        var animal_data = $(this).attr("data-name");
-
-        var queryURL = "https://api.giphy.com/v1/gifs/search?q="+animal_data+"&api_key=CA9BEThjx4Sp2dDjCOIj2bXqRDiNhi4E&limit=10";
-
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      console.log(response);
-      for(var i = 0; i < response.data.length; i++) {
-        var div = $("<div>");
-        var p=$("<p>").text("Ratings: "+response.data[i].rating);
-        var gifImg = $("<img>");
-        gifImg.attr("src", response.data[i].images.downsized_still.url);
-        div.append(p);
-        div.append(gifImg); 
-        $("#gifs").append(div);  
-        console.log(response.data[i].images.downsized_still.url);
-      }
-    //   response.data.forEach((gif) => {
-
-
-    //   })
-    })
-});
-  </script>
-
+  <script src="app.js"></script>
+  
+  
 </body>
-
 </html>
